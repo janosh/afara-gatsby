@@ -1,16 +1,17 @@
-import React from 'react'
-import styled, { css } from 'styled-components'
-import { Link } from 'gatsby'
-import { Close } from 'styled-icons/material/Close'
-import { Menu } from 'styled-icons/feather/Menu'
+import React from "react"
+import styled, { css } from "styled-components"
+import { Link } from "gatsby"
+import { Close } from "styled-icons/material/Close"
+import { Menu } from "styled-icons/feather/Menu"
 
-import mediaQuery from '../../utils/mediaQuery'
+import mediaQuery from "../../utils/mediaQuery"
 
-const partlyActive = className => ({ isPartiallyCurrent }) =>
-  isPartiallyCurrent ? { className: className + ' active' } : null
+const partlyActive = className => ({ isPartiallyCurrent }) => ({
+  className: className + (isPartiallyCurrent ? ` active` : ``),
+})
 
-const PartlyActiveLink = props => (
-  <Link getProps={partlyActive(props.className)} {...props} />
+const PartlyActiveLink = ({ className, ...rest }) => (
+  <Link getProps={partlyActive(className)} {...rest} />
 )
 
 export const navLinkStyle = css`
@@ -73,10 +74,10 @@ export const SubNav = styled.div`
   grid-template-columns: ${props =>
     props.children[1].length >= 10 ? `1fr 1fr` : `1fr`};
   pointer-events: none;
-  ${mediaQuery.maxNetbook} {
+  ${mediaQuery.maxPhablet} {
     ${props => props.showNav && subNavVisible};
   }
-  ${mediaQuery.minNetbook} {
+  ${mediaQuery.minPhablet} {
     ${NavEntry}:hover & {
       ${subNavVisible};
       position: absolute;
