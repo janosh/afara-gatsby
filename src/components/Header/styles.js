@@ -27,4 +27,7 @@ export const SiteTitle = styled(Link)`
   display: inline-grid;
   ${navLinkStyle};
   justify-self: center;
+  background: ${props => props.theme.white};
+  border-radius: 50%;
+  padding: 0.1em;
 `
