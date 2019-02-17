@@ -1,10 +1,26 @@
-import styled from 'styled-components'
-import { Link } from 'gatsby'
+import styled from "styled-components"
 
-export const TagContainer = styled.div`
-  grid-column: 2 / -2;
-  text-align: center;
-  margin-top: 1em;
+import mediaQuery from "../../utils/mediaQuery"
+
+export const Container = styled.div`
+  margin: 8vh 0;
+  ${mediaQuery.minTablet} {
+    grid-column: 4;
+    grid-row: 3;
+  }
+  h2 {
+    margin-top: 0;
+  }
+`
+
+export const Tag = styled.button`
+  display: flex;
+  align-items: center;
+  color: ${props => props.active && props.theme.darkYellow};
+  font-size: 0.8em;
+  cursor: pointer;
+  outline: none;
+  border: none;
 `
 
 export const TagIcon = styled.img`
@@ -17,19 +33,8 @@ export const TagIcon = styled.img`
   padding: 0.2em;
 `
 
-export const TagLink = styled(Link)`
-  display: flex;
-  align-items: center;
-  &.${props => props.activeClassName} {
-    color: ${props => props.theme.orange};
-  }
-`
-
 export const List = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  > * {
-    margin: 0 1em 1em 0;
-  }
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(10em, 1fr));
+  grid-gap: 1em;
 `
