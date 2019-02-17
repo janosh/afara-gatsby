@@ -1,13 +1,13 @@
-import React from 'react'
-import { graphql } from 'gatsby'
+import React from "react"
+import { graphql } from "gatsby"
 
-import Global from '../components/Global'
-import PostTitle from '../components/PostTitle'
-import PageBody from '../components/styles/PageBody'
+import Global from "../components/Global"
+import PostTitle from "../components/PostTitle"
+import PageBody from "../components/styles/PageBody"
 
 const PostTemplate = ({ data: { post }, location }) => {
   const { title, body, featuredImage } = post
-  const { html, excerpt } = body.data
+  const { html, excerpt } = body.remark
   return (
     <Global
       pageTitle={title}
@@ -31,8 +31,8 @@ export const query = graphql`
       name
       email
       photo {
-        file {
-          url
+        fixed(width: 100) {
+          ...GatsbyContentfulFixed_withWebp
         }
       }
     }
@@ -42,7 +42,7 @@ export const query = graphql`
     }
     date(formatString: "MMM D, YYYY")
     body {
-      data: childMarkdownRemark {
+      remark: childMarkdownRemark {
         html
         timeToRead
         excerpt
