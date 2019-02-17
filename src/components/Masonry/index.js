@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
+import React, { Component, createRef } from "react"
 
-import { Parent, Child } from './styles'
+import { Parent, Child } from "./styles"
 
 export default class Masonry extends Component {
   static defaultProps = {
@@ -8,13 +8,17 @@ export default class Masonry extends Component {
     colWidth: `17em`,
   }
 
-  state = { spans: [], ref: React.createRef() }
+  state = { spans: [], ref: createRef() }
+
+  // sums up heights of all nodes
+  reducer = (acc, node) => acc + node.scrollHeight
 
   computeSpans = () => {
     const { rowHeight } = this.props
     const spans = []
     Array.from(this.state.ref.current.children).forEach(child => {
-      const span = Math.ceil(child.clientHeight / rowHeight)
+      const childHeight = Array.from(child.children).reduce(this.reducer, 0)
+      const span = Math.ceil(childHeight / rowHeight)
       spans.push(span + 1)
       child.style.height = span * rowHeight + `px`
     })
@@ -23,11 +27,11 @@ export default class Masonry extends Component {
 
   componentDidMount() {
     this.computeSpans()
-    window.addEventListener('resize', this.computeSpans)
+    window.addEventListener(`resize`, this.computeSpans)
   }
 
   componentWillUnmount() {
-    window.removeEventListener('resize', this.computeSpans)
+    window.removeEventListener(`resize`, this.computeSpans)
   }
 
   render() {
