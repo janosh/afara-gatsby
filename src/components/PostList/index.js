@@ -1,17 +1,17 @@
-import React from 'react'
+import React from "react"
 
-import Masonry from '../Masonry'
-import PostExcerpt from '../PostExcerpt'
-import { Container } from './styles'
+import PostExcerpt from "../PostExcerpt"
+import Grid from "../Grid"
+import { PostListContainer } from "./styles"
 
-const PostList = ({ posts }) => (
-  <Container>
-    <Masonry>
+const PostList = ({ posts, ...rest }) => (
+  <PostListContainer>
+    <Grid minWidth="17em" maxWidth="24em" gap="2em 1.5em">
       {posts.map(({ node }) => (
-        <PostExcerpt key={node.slug} post={node} />
+        <PostExcerpt key={node.slug} post={node} {...rest} />
       ))}
-    </Masonry>
-  </Container>
+    </Grid>
+  </PostListContainer>
 )
 
 export default PostList
