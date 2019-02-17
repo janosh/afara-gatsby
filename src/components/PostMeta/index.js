@@ -1,12 +1,12 @@
-import React, { Fragment } from 'react'
-import PropTypes from 'prop-types'
-import { Link } from 'gatsby'
+import React, { Fragment } from "react"
+import PropTypes from "prop-types"
+import { Link } from "gatsby"
 
-import { UserEdit } from 'styled-icons/fa-solid/UserEdit'
-import { Calendar as Date } from 'styled-icons/octicons/Calendar'
-import { Timer } from 'styled-icons/material/Timer'
+import { UserEdit } from "styled-icons/fa-solid/UserEdit"
+import { Calendar as Date } from "styled-icons/octicons/Calendar"
+import { Timer } from "styled-icons/material/Timer"
 
-import { Meta, AuthorPhoto } from './styles'
+import { Meta, AuthorPhoto } from "./styles"
 
 const PostMeta = ({ author, date, tags, body, inTitle, iconSize }) => (
   <Fragment>
@@ -15,7 +15,7 @@ const PostMeta = ({ author, date, tags, body, inTitle, iconSize }) => (
         <UserEdit size={iconSize} />
         &nbsp;
         <a href={`mailto:${author.email}`}>{author.name}</a>
-        <AuthorPhoto src={author.photo.file.url} />
+        <AuthorPhoto fixed={author.photo.fixed} />
       </span>
       <span>
         <Date size={iconSize} />
@@ -25,7 +25,7 @@ const PostMeta = ({ author, date, tags, body, inTitle, iconSize }) => (
       <span>
         <Timer size={iconSize} />
         &ensp;
-        {body.data.timeToRead} min read
+        {body.remark.timeToRead} min read
       </span>
     </Meta>
     {!inTitle && (
@@ -33,7 +33,7 @@ const PostMeta = ({ author, date, tags, body, inTitle, iconSize }) => (
         <span>Tags: </span>
         {tags.map(({ title, slug }, index) => (
           <Fragment key={slug}>
-            {!!index && ', '}
+            {!!index && `, `}
             <Link to={`blog/` + slug}>{title}</Link>
           </Fragment>
         ))}
@@ -61,5 +61,5 @@ PostMeta.propTypes = {
 }
 
 PostMeta.defaultProps = {
-  iconSize: '1.4em',
+  iconSize: `1.4em`,
 }

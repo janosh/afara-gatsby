@@ -1,6 +1,7 @@
-import styled, { css } from 'styled-components'
+import styled, { css } from "styled-components"
+import Img from "gatsby-image"
 
-import mediaQuery from '../../utils/mediaQuery'
+import mediaQuery from "../../utils/mediaQuery"
 
 const inTitle = css`
   justify-items: center;
@@ -35,8 +36,9 @@ export const Meta = styled.div`
   ${props => props.inTitle && inTitle};
 `
 
-export const AuthorPhoto = styled.img`
-  width: 2em !important;
+export const AuthorPhoto = styled(Img)`
+  width: 2.5em !important;
+  height: 2.5em !important;
   border-radius: 50%;
   margin-left: 0.5em;
 `
