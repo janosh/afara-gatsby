@@ -10,16 +10,31 @@ import { Algolia } from 'styled-icons/fa-brands/Algolia'
 import { Root, SearchBox, HitsWrapper, By } from './styles'
 import * as hitComps from './hits'
 
-const events = ['mousedown', 'touchstart']
+const events = [`mousedown`, `touchstart`]
+
+const noResultsStr = {
+  en: `No results for `,
+  de: `Keine Ergebnisse für `,
+}
+
+const resultsStr = {
+  en: [` result`, ` results`],
+  de: [` Ergebnis`, ` Ergebnisse`],
+}
 
 const Results = connectStateResults(
   ({ searchState: state, searchResults: res, children }) =>
-    res && res.nbHits ? children : `No results for ${state.query}`
+    res && res.nbHits
+      ? children
+      : noResultsStr[process.env.GATSBY_LANG || `en`] + state.query
 )
 
 const Stats = connectStateResults(
   ({ searchResults: res }) =>
-    res && res.nbHits > 0 && `${res.nbHits} result${res.nbHits > 1 ? `s` : ``}`
+    res &&
+    res.nbHits > 0 &&
+    res.nbHits +
+      resultsStr[process.env.GATSBY_LANG || `en`][res.nbHits > 1 ? 1 : 0]
 )
 
 export default class Search extends Component {
@@ -58,8 +73,8 @@ export default class Search extends Component {
     const { indices, collapse, hitsAsGrid } = this.props
     return (
       <InstantSearch
-        appId={process.env.GATSBY_algoliaAppId}
-        apiKey={process.env.GATSBY_algoliaSearchKey}
+        appId={process.env.GATSBY_ALGOLIA_APP_ID}
+        apiKey={process.env.GATSBY_ALGOLIA_SEARCH_KEY}
         indexName={indices[0].name}
         onSearchStateChange={this.updateState}
         root={{ Root, props: { ref } }}
@@ -81,7 +96,7 @@ export default class Search extends Component {
             </Index>
           ))}
           <By>
-            Powered by{' '}
+            Powered by{` `}
             <a href="https://www.algolia.com">
               <Algolia size="1em" /> Algolia
             </a>
