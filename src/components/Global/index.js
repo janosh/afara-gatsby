@@ -1,27 +1,27 @@
-import React from 'react'
-import { StaticQuery, graphql } from 'gatsby'
-import { ThemeProvider } from 'styled-components'
-import PropTypes from 'prop-types'
+import React from "react"
+import { StaticQuery, graphql } from "gatsby"
+import { ThemeProvider } from "styled-components"
+import PropTypes from "prop-types"
 
-import Helmet from '../Helmet'
-import Hero from '../Hero'
-import Header from '../Header'
-import Footer from '../Footer'
-import theme from '../../utils/theme'
-import Scroll from '../Scroll'
+import Helmet from "../Helmet"
+import Cover from "../Cover"
+import Header from "../Header"
+import Footer from "../Footer"
+import theme from "../../utils/theme"
+import Scroll from "../Scroll"
 
-import { Root, GlobalStyle } from './styles'
+import { Root, GlobalStyle } from "./styles"
 
-const Global = ({ children, site, path, showHero = true, hero, ...rest }) => (
+const Global = ({ children, site, path, cover, ...rest }) => (
   <ThemeProvider theme={theme}>
     <Root>
-      <Helmet site={site.meta} path={path} {...rest} />
+      <Helmet site={site} path={path} {...rest} />
       <GlobalStyle />
-      {showHero && <Hero hero={hero} path={path} />}
-      <Header site={site.meta} />
+      <Cover cover={cover} path={path} />
+      <Header site={site} />
       {children}
       <Footer />
-      <Scroll to="top" position="fixed" justify="right" showBelow={1000} />
+      <Scroll to="top" position="fixed" align="right" showBelow={1000} />
     </Root>
   </ThemeProvider>
 )
@@ -29,15 +29,14 @@ const Global = ({ children, site, path, showHero = true, hero, ...rest }) => (
 Global.propTypes = {
   site: PropTypes.object.isRequired,
   path: PropTypes.string.isRequired,
-  showHero: PropTypes.bool,
-  hero: PropTypes.object,
+  cover: PropTypes.object,
   children: PropTypes.node.isRequired,
 }
 
 const query = graphql`
   {
     site {
-      meta: siteMetadata {
+      site: siteMetadata {
         title
         url: siteUrl
         description
@@ -47,5 +46,8 @@ const query = graphql`
 `
 
 export default props => (
-  <StaticQuery query={query} render={data => <Global {...data} {...props} />} />
+  <StaticQuery
+    query={query}
+    render={data => <Global {...data.site} {...props} />}
+  />
 )
