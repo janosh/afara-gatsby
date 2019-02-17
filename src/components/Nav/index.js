@@ -1,8 +1,9 @@
-import React from 'react'
-import { StaticQuery, graphql } from 'gatsby'
-import PropTypes from 'prop-types'
+import React from "react"
+import { StaticQuery, graphql } from "gatsby"
+import PropTypes from "prop-types"
+export { navLinkStyle } from "./styles"
 
-import Nav from './comp'
+import Nav from "./comp"
 
 const query = graphql`
   {
