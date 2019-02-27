@@ -9,9 +9,9 @@ export const PostListContainer = styled.div`
   font-size: 0.8em;
   line-height: 1.4em;
   height: max-content;
+  grid-row: 1;
   grid-column: 2/4;
-  margin: 8vh 0;
   ${mediaQuery.maxTablet} {
-    grid-column: 3/4;
+    grid-column: 2/4;
   }
 `
