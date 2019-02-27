@@ -4,25 +4,23 @@ import { ThemeProvider } from "styled-components"
 import PropTypes from "prop-types"
 
 import Helmet from "../Helmet"
-import Cover from "../Cover"
 import Header from "../Header"
 import Footer from "../Footer"
 import theme from "../../utils/theme"
 import Scroll from "../Scroll"
 
-import { Root, GlobalStyle } from "./styles"
+import { GlobalStyle } from "./styles"
 
-const Global = ({ children, site, path, cover, ...rest }) => (
+const Global = ({ children, site, path, ...rest }) => (
   <ThemeProvider theme={theme}>
-    <Root>
+    <>
       <Helmet site={site} path={path} {...rest} />
       <GlobalStyle />
-      <Cover cover={cover} path={path} />
       <Header site={site} />
       {children}
       <Footer />
       <Scroll to="top" position="fixed" align="right" showBelow={1000} />
-    </Root>
+    </>
   </ThemeProvider>
 )
 
