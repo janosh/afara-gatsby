@@ -3,10 +3,8 @@ import styled from "styled-components"
 import mediaQuery from "../../utils/mediaQuery"
 
 export const Container = styled.div`
-  margin: 8vh 0;
   ${mediaQuery.minTablet} {
     grid-column: 4;
-    grid-row: 3;
   }
   h2 {
     margin-top: 0;
