@@ -5,8 +5,9 @@ import Global from "../components/Global"
 import PageTitle from "../components/PageTitle"
 import TagList from "../components/TagList"
 import PostList from "../components/PostList"
+import PageBody from "../components/styles/PageBody"
 
-const BlogPage = ({ data, location, title = `Blog` }) => {
+const BlogPage = ({ data, location }) => {
   const { posts, tags } = data
   const [tag, setTag] = useState(`Alle`)
   const filteredPosts =
@@ -16,14 +17,16 @@ const BlogPage = ({ data, location, title = `Blog` }) => {
         node.tags.map(tag => tag.title).includes(tag)
       )
   return (
-    <Global pageTitle={title} path={location.pathname}>
-      <PageTitle cols="2 / -2">
-        <h1>{title}</h1>
+    <Global pageTitle="Blog" path={location.pathname}>
+      <PageTitle>
+        <h1>Blog</h1>
       </PageTitle>
-      <TagList tags={tags.edges} activeTag={tag} setTag={setTag} />
-      {posts && (
-        <PostList posts={filteredPosts} activeTag={tag} setTag={setTag} />
-      )}
+      <PageBody>
+        <TagList tags={tags.edges} activeTag={tag} setTag={setTag} />
+        {posts && (
+          <PostList posts={filteredPosts} activeTag={tag} setTag={setTag} />
+        )}
+      </PageBody>
     </Global>
   )
 }
