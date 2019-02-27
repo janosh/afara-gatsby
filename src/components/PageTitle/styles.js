@@ -1,16 +1,34 @@
-import styled from 'styled-components'
+import styled, { css } from "styled-components"
 
-export const Container = styled.header`
-  z-index: 2;
-  grid-column: 2 / -2;
-  grid-row: 2;
-  text-align: center;
+export const PageTitleContainer = styled.hgroup`
   color: ${props => props.theme.white};
-  font-size: calc(1em + 1vw);
-  h1 {
-    text-transform: uppercase;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: ${props => (props.height || 60) + `vh`};
+`
+
+export const Background = styled.div`
+  width: 100%;
+  position: absolute;
+  overflow: hidden;
+  height: ${props => (props.height || 60) + `vh`};
+`
+
+const backdrop = css`
+  > * {
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: ${props => props.theme.smallBorderRadius};
+    justify-self: center;
+    padding: 0.1em 0.4em;
   }
-  h2 {
-    margin-top: 2.5em;
-  }
+`
+
+export const Title = styled.div`
+  text-align: center;
+  font-size: calc(1em + 0.5vw);
+  margin-top: 2em;
+  z-index: 2;
+  ${props => props.backdrop && backdrop};
 `
