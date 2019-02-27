@@ -24,28 +24,6 @@ const PageTemplate = ({ data, location }) => {
 export default PageTemplate
 
 export const query = graphql`
-  fragment pageFields on ContentfulPage {
-    title
-    subtitle {
-      remark: childMarkdownRemark {
-        excerpt
-        html
-      }
-    }
-    slug
-    body {
-      remark: childMarkdownRemark {
-        excerpt
-        html
-      }
-    }
-    cover {
-      fluid {
-        src
-      }
-    }
-    fullHeightCover
-  }
   query($slug: String!) {
     page: contentfulPage(slug: { eq: $slug }) {
       ...pageFields
