@@ -9,7 +9,7 @@ export default PageNotFound
 
 export const query = graphql`
   {
-    page: contentfulPage(slug: { eq: "404" }) {
+    page: contentfulPage(slug: { eq: "/404" }) {
       ...pageFields
     }
   }
