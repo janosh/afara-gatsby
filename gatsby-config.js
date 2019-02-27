@@ -24,9 +24,12 @@ module.exports = {
           {
             resolve: `gatsby-remark-images-contentful`,
             options: {
-              maxWidth: 2500,
+              maxWidth: 1200,
               linkImagesToOriginal: false,
-              wrapperStyle: `max-width: none !important;`,
+              wrapperStyle: `
+                border-radius: 0.5em;
+                overflow: hidden;
+              `,
             },
           },
           `gatsby-remark-embed-video`,
