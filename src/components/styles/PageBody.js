@@ -1,14 +1,18 @@
-import styled from 'styled-components'
+import styled from "styled-components"
 
-import imageRow from './imageRow'
-import team from './team'
-import mediaQuery from '../../utils/mediaQuery'
+import imageRow from "./imageRow"
+import mediaQuery from "../../utils/mediaQuery"
 
-const PageBody = styled.article`
-  grid-column: 3;
-  margin: 9vh 0;
+const PageBody = styled.main`
+  display: grid;
+  grid-gap: 0 4vw;
+  grid-template-columns: 1fr 1fr minmax(auto, ${props => props.theme.maxWidth}) 1fr 1fr;
+  margin: calc(2em + 2vh) 0;
   ${mediaQuery.minPhablet} {
     text-align: justify;
+  }
+  > * {
+    grid-column: 3;
   }
   img {
     width: 100%;
@@ -22,7 +26,6 @@ const PageBody = styled.article`
     margin-bottom: 1em;
   }
   ${imageRow};
-  ${team};
 `
 
 export default PageBody
