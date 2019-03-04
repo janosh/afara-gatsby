@@ -9,7 +9,7 @@ import PageBody from "../components/styles/PageBody"
 
 const PageTemplate = ({ data, location }) => {
   const { title, subtitle, body, cover, slideshow, titleHeight } = data.page
-  const { excerpt, html } = (body && body.remark) || subtitle.remark
+  const { excerpt } = (body && body.remark) || subtitle.remark
   const background = slideshow ? (
     <Slideshow>
       {slideshow.slides.map(({ title, image }) => (
@@ -27,7 +27,9 @@ const PageTemplate = ({ data, location }) => {
           <h2 dangerouslySetInnerHTML={{ __html: subtitle.remark.html }} />
         )}
       </PageTitle>
-      {html && <PageBody dangerouslySetInnerHTML={{ __html: html }} />}
+      {body && (
+        <PageBody dangerouslySetInnerHTML={{ __html: body.remark.html }} />
+      )}
     </Global>
   )
 }

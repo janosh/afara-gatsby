@@ -14,6 +14,9 @@ export const Background = styled.div`
   position: absolute;
   overflow: hidden;
   height: ${props => (props.height || 60) + `vh`};
+  > * {
+    height: 100%;
+  }
 `
 
 const backdrop = css`
