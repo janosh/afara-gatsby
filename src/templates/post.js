@@ -6,14 +6,14 @@ import PostTitle from "../components/PostTitle"
 import PageBody from "../components/styles/PageBody"
 
 const PostTemplate = ({ data: { post }, location }) => {
-  const { title, body, featuredImage } = post
+  const { title, body, cover } = post
   const { html, excerpt } = body.remark
   return (
     <Global
       pageTitle={title}
       path={location.pathname}
       description={excerpt}
-      hero={featuredImage}
+      hero={cover}
     >
       <PostTitle post={post} />
       <PageBody dangerouslySetInnerHTML={{ __html: html }} />

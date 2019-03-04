@@ -5,11 +5,11 @@ import Img from "gatsby-image"
 import { Post, Title, Excerpt } from "./styles"
 import PostMeta from "../PostMeta"
 
-const PostExcerpt = ({ post, post: { title, slug, body, featuredImage } }) => (
+const PostExcerpt = ({ post, post: { title, slug, body, cover } }) => (
   <Post>
-    {featuredImage && (
+    {cover && (
       <Link to={`/blog/` + slug}>
-        <Img fluid={featuredImage.fluid} alt={featuredImage.title} />
+        <Img fluid={cover.fluid} alt={cover.title} />
       </Link>
     )}
     <main>
