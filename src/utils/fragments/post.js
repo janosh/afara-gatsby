@@ -25,7 +25,7 @@ export const query = graphql`
         excerpt
       }
     }
-    featuredImage {
+    cover {
       title
       fluid(quality: 100, maxWidth: 1500) {
         ...GatsbyContentfulFluid_withWebp
