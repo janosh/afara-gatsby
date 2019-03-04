@@ -8,6 +8,7 @@ const inTitle = css`
   padding: 0.2em 1em;
   background: rgba(0, 0, 0, 0.6);
   border-radius: ${props => props.theme.mediumBorderRadius};
+  font-size: 0.8em;
   > :not(:first-child) {
     ${mediaQuery.minPhone} {
       padding-left: 0.7em;
