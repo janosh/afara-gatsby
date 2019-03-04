@@ -23,7 +23,7 @@ const pageSets = [
   {
     query: contentfulQuery(`Post`),
     component: postTemplate,
-    pathPrefix: `/blog/`,
+    pathPrefix: `/blog`,
   },
 ]
 

@@ -7,7 +7,7 @@ import { Tags } from "styled-icons/fa-solid/Tags"
 
 const PostHit = clickHandler => ({ hit }) => (
   <div>
-    <Link to={`/blog/` + hit.slug} onClick={clickHandler}>
+    <Link to={`/blog` + hit.slug} onClick={clickHandler}>
       <h4>
         <Highlight attribute="title" hit={hit} tagName="mark" />
       </h4>
@@ -28,7 +28,7 @@ const PostHit = clickHandler => ({ hit }) => (
       {hit.tags.map(({ title, slug }, index) => (
         <Fragment key={slug}>
           {!!index && `, `}
-          <Link to={`/blog/` + slug}>{title}</Link>
+          <Link to={`/blog` + slug}>{title}</Link>
         </Fragment>
       ))}
     </div>

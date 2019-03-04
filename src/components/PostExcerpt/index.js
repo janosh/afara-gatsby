@@ -8,12 +8,12 @@ import PostMeta from "../PostMeta"
 const PostExcerpt = ({ post, post: { title, slug, body, cover } }) => (
   <Post>
     {cover && (
-      <Link to={`/blog/` + slug}>
+      <Link to={`/blog` + slug}>
         <Img fluid={cover.fluid} alt={cover.title} />
       </Link>
     )}
     <main>
-      <Link to={`/blog/` + slug}>
+      <Link to={`/blog` + slug}>
         <Title>{title}</Title>
       </Link>
       <PostMeta {...post} />
