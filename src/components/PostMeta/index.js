@@ -5,11 +5,12 @@ import { Link } from "gatsby"
 import { UserEdit } from "styled-icons/fa-solid/UserEdit"
 import { Calendar as Date } from "styled-icons/octicons/Calendar"
 import { Timer } from "styled-icons/material/Timer"
+import { Tags } from "styled-icons/fa-solid/Tags"
 
 import { Meta, AuthorPhoto } from "./styles"
 
 const PostMeta = ({ author, date, tags, body, inTitle, iconSize }) => (
-  <Fragment>
+  <>
     <Meta inTitle={inTitle}>
       <span>
         <UserEdit size={iconSize} />
@@ -19,27 +20,29 @@ const PostMeta = ({ author, date, tags, body, inTitle, iconSize }) => (
       </span>
       <span>
         <Date size={iconSize} />
-        &ensp;
+        &nbsp;
         {date}
       </span>
       <span>
         <Timer size={iconSize} />
-        &ensp;
+        &nbsp;
         {body.remark.timeToRead} min read
       </span>
     </Meta>
     {!inTitle && (
       <div>
+        <Tags size="1em" />
+        &nbsp;
         <span>Tags: </span>
         {tags.map(({ title, slug }, index) => (
           <Fragment key={slug}>
-            {!!index && `, `}
-            <Link to={`/blog/` + slug}>{title}</Link>
+            {index > 0 && `, `}
+            <Link to={`/blog` + slug}>{title}</Link>
           </Fragment>
         ))}
       </div>
     )}
-  </Fragment>
+  </>
 )
 
 export default PostMeta
