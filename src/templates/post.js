@@ -2,11 +2,12 @@ import React from "react"
 import { graphql } from "gatsby"
 
 import Global from "../components/Global"
-import PostTitle from "../components/PostTitle"
+import PageTitle from "../components/PageTitle"
+import PostMeta from "../components/PostMeta"
 import PageBody from "../components/styles/PageBody"
 
-const PostTemplate = ({ data: { post }, location }) => {
-  const { title, body, cover } = post
+const PostTemplate = ({ data, location }) => {
+  const { title, body, cover } = data.post
   const { html, excerpt } = body.remark
   return (
     <Global
@@ -15,7 +16,10 @@ const PostTemplate = ({ data: { post }, location }) => {
       description={excerpt}
       hero={cover}
     >
-      <PostTitle post={post} />
+      <PageTitle>
+        <h1>{title}</h1>
+        <PostMeta inTitle {...data.post} />
+      </PageTitle>
       <PageBody dangerouslySetInnerHTML={{ __html: html }} />
     </Global>
   )
