@@ -14,9 +14,6 @@ const PageBody = styled.main`
   > * {
     grid-column: 3;
   }
-  img {
-    width: 100%;
-  }
   img + em,
   .gatsby-resp-image-wrapper + em {
     display: block;
