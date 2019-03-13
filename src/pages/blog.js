@@ -7,25 +7,37 @@ import TagList from "../components/TagList"
 import PostList from "../components/PostList"
 import PageBody from "../components/styles/PageBody"
 
+const filterPostsByTag = (tag, posts) =>
+  tag === `alle`
+    ? posts
+    : posts.filter(({ node }) => node.tags.map(tag => tag.slug).includes(tag))
+
+const readActiveTagFromUrl = urlParams =>
+  urlParams.replace(/.*tag=([^&]+).*/, `$1`)
+
 const BlogPage = ({ data, location }) => {
   const { posts, tags } = data
-  const [tag, setTag] = useState(`Alle`)
-  const filteredPosts =
-    tag === `Alle`
-      ? posts.edges
-      : posts.edges.filter(({ node }) =>
-        node.tags.map(tag => tag.title).includes(tag)
-      )
+  const urlTag = readActiveTagFromUrl(location.search)
+  const [tag, setTag] = useState(urlTag || `alle`)
+  const filteredPosts = filterPostsByTag(tag, posts.edges)
+
+  const handleTagClick = tag => {
+    setTag(tag)
+    history.replaceState(
+      { activeTag: tag },
+      `active tag: ${tag}`,
+      tag === `alle` ? `/blog` : `/blog?tag=${tag}`
+    )
+  }
+
   return (
     <Global pageTitle="Blog" path={location.pathname}>
       <PageTitle>
         <h1>Blog</h1>
       </PageTitle>
       <PageBody>
-        <TagList tags={tags.edges} activeTag={tag} setTag={setTag} />
-        {posts && (
-          <PostList posts={filteredPosts} activeTag={tag} setTag={setTag} />
-        )}
+        <TagList tags={tags.edges} activeTag={tag} setTag={handleTagClick} />
+        <PostList posts={filteredPosts} />
       </PageBody>
     </Global>
   )
@@ -46,6 +58,7 @@ export const query = graphql`
       edges {
         node {
           title
+          slug
           icon {
             title
             file {
