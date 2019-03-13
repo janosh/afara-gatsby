@@ -10,16 +10,17 @@ export const Container = styled.footer`
   grid-template-areas:
     "copyright"
     "donations"
-    "links";
+    "links"
+    "partners";
   justify-items: center;
   grid-gap: 4vh 6vw;
   a {
     color: ${props => props.theme.orange};
   }
-  ${mediaQuery.minPhone} {
+  ${mediaQuery.minPhablet} {
     grid-template-areas:
       "copyright donations"
-      "links links";
+      "partners links";
   }
 `
 
@@ -27,9 +28,17 @@ export const Links = styled.nav`
   grid-area: links;
   display: grid;
   grid-gap: 1em;
+  justify-items: center;
   ${mediaQuery.minPhone} {
     grid-template-columns: max-content;
     grid-auto-flow: column;
-    justify-content: center;
   }
+`
+
+export const Partners = styled.div`
+  grid-area: partners;
+  display: grid;
+  grid-gap: 1em;
+  grid-template-areas: "title title";
+  justify-items: center;
 `
