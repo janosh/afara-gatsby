@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const contentful = require(`contentful-management`)
 require(`dotenv`).config()
 
@@ -19,6 +20,5 @@ client
       return item.publish()
     })
   )
-  /* eslint-disable no-console */
   .then(console.log)
   .catch(console.error)
