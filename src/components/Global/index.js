@@ -3,7 +3,7 @@ import { StaticQuery, graphql } from "gatsby"
 import { ThemeProvider } from "styled-components"
 import PropTypes from "prop-types"
 
-import Helmet from "../Helmet"
+import Seo from "../Seo"
 import Header from "../Header"
 import Footer from "../Footer"
 import theme from "../../utils/theme"
@@ -14,7 +14,7 @@ import { GlobalStyle } from "./styles"
 const Global = ({ children, site, path, ...rest }) => (
   <ThemeProvider theme={theme}>
     <>
-      <Helmet site={site} path={path} {...rest} />
+      <Seo site={site} path={path} {...rest} />
       <GlobalStyle />
       <Header site={site} />
       {children}
@@ -36,7 +36,7 @@ const query = graphql`
     site {
       site: siteMetadata {
         title
-        url: siteUrl
+        url
         description
       }
     }
