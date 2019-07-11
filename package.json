@@ -8,31 +8,44 @@
   "author": "Janosh Riebesell <janosh.riebesell@gmail.com>",
   "repository": "https://github.com/janosh/afara",
   "dependencies": {
-    "algoliasearch": "^3.32.0",
-    "babel-plugin-styled-components": "^1.9.1",
-    "gatsby": "2.1.4",
-    "gatsby-image": "2.0.29",
-    "gatsby-plugin-algolia": "^0.3.0",
-    "gatsby-plugin-catch-links": "2.0.11",
-    "gatsby-plugin-google-analytics": "2.0.14",
-    "gatsby-plugin-manifest": "2.0.17",
-    "gatsby-plugin-offline": "2.0.23",
-    "gatsby-plugin-react-helmet": "3.0.6",
-    "gatsby-plugin-sharp": "2.0.20",
-    "gatsby-plugin-styled-components": "3.0.5",
-    "gatsby-remark-embed-video": "1.7.0",
-    "gatsby-remark-images-contentful": "2.0.8",
-    "gatsby-remark-responsive-iframe": "2.0.9",
-    "gatsby-remark-smartypants": "2.0.8",
-    "gatsby-source-contentful": "2.0.29",
-    "gatsby-transformer-remark": "2.2.5",
-    "gatsby-transformer-sharp": "2.1.13",
-    "react": "^16.8.2",
-    "react-dom": "^16.8.2",
-    "react-helmet": "^5.2.0",
-    "react-instantsearch-dom": "^5.4.0",
-    "styled-components": "^4.1.1",
-    "styled-icons": "^7.1.1"
+    "algoliasearch": "^3.33.0",
+    "babel-plugin-styled-components": "^1.10.6",
+    "gatsby": "2.13.15",
+    "gatsby-image": "2.2.5",
+    "gatsby-plugin-algolia": "^0.3.2",
+    "gatsby-plugin-catch-links": "2.1.1",
+    "gatsby-plugin-google-analytics": "2.1.2",
+    "gatsby-plugin-manifest": "2.2.2",
+    "gatsby-plugin-offline": "2.2.2",
+    "gatsby-plugin-react-helmet": "3.1.1",
+    "gatsby-plugin-sharp": "2.2.4",
+    "gatsby-plugin-styled-components": "3.1.1",
+    "gatsby-remark-embed-video": "1.7.1",
+    "gatsby-remark-images-contentful": "2.1.2",
+    "gatsby-remark-responsive-iframe": "2.2.2",
+    "gatsby-remark-smartypants": "2.1.1",
+    "gatsby-source-contentful": "2.1.10",
+    "gatsby-transformer-remark": "2.6.3",
+    "gatsby-transformer-sharp": "2.2.2",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-helmet": "^5.2.1",
+    "react-instantsearch-dom": "^5.7.0",
+    "styled-components": "^4.3.2",
+    "styled-icons": "^8.1.0"
+  },
+  "devDependencies": {
+    "contentful-management": "^5.9.0",
+    "eslint": "^6.0.1",
+    "eslint-plugin-react": "^7.14.2"
+  },
+  "scripts": {
+    "dev": "gatsby develop -o -H 0.0.0.0",
+    "serve": "gatsby build && gatsby serve -o -H 0.0.0.0",
+    "deploy": "gatsby build && netlify deploy",
+    "clean": "gatsby clean && gatsby build && gatsby serve -o -H 0.0.0.0",
+    "debugDev": "node --inspect node_modules/.bin/gatsby develop -o -H 0.0.0.0",
+    "debugProd": "node --inspect node_modules/.bin/gatsby build && gatsby serve -o -H 0.0.0.0"
   },
   "keywords": [
     "Afara",
@@ -43,9 +56,9 @@
     "fluid typography",
     "CSS grid"
   ],
-  "devDependencies": {
-    "contentful-management": "^5.6.0",
-    "eslint": "^5.14.0",
-    "eslint-plugin-react": "^7.12.4"
-  }
+  "eslintIgnore": [
+    "node_modules",
+    ".cache",
+    "public"
+  ]
 }
