@@ -7,7 +7,7 @@ module.exports = {
     title: `Afara e.V.`,
     description: `Homepage for German non-profit Afara e.V.`,
     author: `Janosh Riebesell`,
-    siteUrl: `https://afara.foundation`,
+    url: `https://afara.foundation`,
   },
   plugins: [
     {
