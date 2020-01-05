@@ -1,8 +1,8 @@
-import React from "react"
+import React from 'react'
 
-import PostExcerpt from "../PostExcerpt"
-import Grid from "../Grid"
-import { PostListContainer } from "./styles"
+import PostExcerpt from '../PostExcerpt'
+import Grid from '../Grid'
+import { PostListContainer } from './styles'
 
 const PostList = ({ posts, ...rest }) => (
   <PostListContainer>

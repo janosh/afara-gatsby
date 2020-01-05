@@ -1,8 +1,8 @@
-import React, { Component } from "react"
-import PropTypes from "prop-types"
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
-import Dots from "../Dots"
-import { SlideContainer, Slide } from "./styles"
+import Dots from '../Dots'
+import { SlideContainer, Slide } from './styles'
 
 export default class Slideshow extends Component {
   static propTypes = {

@@ -1,7 +1,7 @@
-import styled, { css } from "styled-components"
-import Img from "gatsby-image"
+import styled, { css } from 'styled-components'
+import Img from 'gatsby-image'
 
-import mediaQuery from "../../utils/mediaQuery"
+import mediaQuery from 'utils/mediaQuery'
 
 const inTitle = css`
   justify-items: center;

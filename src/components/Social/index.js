@@ -1,17 +1,27 @@
-import React from "react"
-import { StaticQuery, graphql } from "gatsby"
+import React from 'react'
+import { useStaticQuery, graphql } from 'gatsby'
 
-import { Wrapper, Container, Toggle, Link, Icons } from "./styles"
+import { Wrapper, Container, Toggle, Link, Icons } from './styles'
 
-const Social = ({ social, size = `1em`, collapse, linkStyle }) => {
+export default function Social({ size = `1em`, collapse, linkStyle }) {
+  const { social } = useStaticQuery(graphql`
+    {
+      social: contentfulJson(title: { eq: "Social" }) {
+        data {
+          Facebook
+          Instagram
+        }
+      }
+    }
+  `)
   return (
     <Wrapper>
       {collapse && <Toggle {...{ size, styles: linkStyle }} />}
       <Container collapse={collapse}>
-        {social.map(({ node }) => {
-          const Icon = Icons[node.icon]
+        {Object.keys(social.data).map(key => {
+          const Icon = Icons[key]
           return (
-            <Link key={node.title} href={node.url} styles={linkStyle}>
+            <Link key={key} href={social.data[key]} styles={linkStyle}>
               <Icon size={size} />
             </Link>
           )
@@ -20,24 +30,3 @@ const Social = ({ social, size = `1em`, collapse, linkStyle }) => {
     </Wrapper>
   )
 }
-
-const query = graphql`
-  {
-    social: allContentfulSocial {
-      social: edges {
-        node {
-          title
-          url
-          icon
-        }
-      }
-    }
-  }
-`
-
-export default props => (
-  <StaticQuery
-    query={query}
-    render={data => <Social {...data.social} {...props} />}
-  />
-)

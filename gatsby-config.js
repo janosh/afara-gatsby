@@ -6,7 +6,7 @@ module.exports = {
   siteMetadata: {
     title: `Afara e.V.`,
     description: `Homepage for German non-profit Afara e.V.`,
-    author: `Janosh Riebesell`,
+    author: `Janosh Riebesell <janosh.riebesell@gmail.com>`,
     url: `https://afara.foundation`,
   },
   plugins: [

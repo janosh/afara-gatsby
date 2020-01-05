@@ -1,12 +1,12 @@
-import { createGlobalStyle } from "styled-components"
+import { createGlobalStyle } from 'styled-components'
 
-import mediaQuery, { screenSize } from "../../utils/mediaQuery"
-import typography from "../../utils/typography"
+import mediaQuery, { screenSize } from 'utils/mediaQuery'
+import typography from 'utils/typography'
 
 const { phone, desktop } = screenSize
 const {
   baseFont,
-  headerFont,
+  headingFont,
   minFontSize,
   maxFontSize,
   minLineHeight,
@@ -30,7 +30,7 @@ export const GlobalStyle = createGlobalStyle`
   }
   h1, h2, h3, h4, h5, h6 {
     line-height: initial;
-    font-family: ${[headerFont, baseFont].join(`,`)}
+    font-family: ${headingFont}, ${baseFont};
   }
   a {
     text-decoration: none;

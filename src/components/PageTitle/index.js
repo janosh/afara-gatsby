@@ -1,32 +1,35 @@
-import React from "react"
-import { StaticQuery, graphql } from "gatsby"
-import Img from "gatsby-image"
+import React from 'react'
+import { useStaticQuery, graphql } from 'gatsby'
+import Img from 'gatsby-image'
+import Slideshow from 'components/Slideshow'
 
-import { PageTitleContainer, Background, Title } from "./styles"
+import { PageTitleContainer, Background, Title } from './styles'
 
-const PageTitle = ({ children, background, backdrop, height, defaultBg }) => (
-  <PageTitleContainer height={height}>
-    <Background height={height}>
-      {background || <Img fluid={defaultBg.fluid} />}
-    </Background>
-    <Title backdrop={backdrop}>{children}</Title>
-  </PageTitleContainer>
-)
-
-const query = graphql`
-  {
-    defaultBg: contentfulAsset(title: { eq: "Jubelnde Menschen" }) {
-      title
-      fluid(quality: 90, maxWidth: 2000) {
-        ...GatsbyContentfulFluid_withWebp
+export default function PageTitle({ children, slideshow, cover, backdrop, height }) {
+  const { defaultBg } = useStaticQuery(graphql`
+    {
+      defaultBg: contentfulAsset(title: { eq: "Jubelnde Menschen" }) {
+        title
+        fluid(quality: 90, maxWidth: 2000) {
+          ...GatsbyContentfulFluid_withWebp
+        }
       }
     }
-  }
-`
-
-export default props => (
-  <StaticQuery
-    query={query}
-    render={data => <PageTitle {...data} {...props} />}
-  />
-)
+  `)
+  return (
+    <PageTitleContainer height={height}>
+      <Background height={height}>
+        {slideshow ? (
+          <Slideshow>
+            {slideshow.slides.map(({ title, image }) => (
+              <Img key={title} fluid={image.fluid} />
+            ))}
+          </Slideshow>
+        ) : (
+          <Img {...(cover || defaultBg)} />
+        )}
+      </Background>
+      <Title backdrop={backdrop}>{children}</Title>
+    </PageTitleContainer>
+  )
+}

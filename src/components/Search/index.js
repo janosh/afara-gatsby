@@ -1,112 +1,58 @@
-import React, { Component, createRef } from "react"
-import {
-  InstantSearch,
-  Index,
-  Hits,
-  connectStateResults,
-} from "react-instantsearch-dom"
-import { Algolia } from "styled-icons/fa-brands/Algolia"
-import algoliasearch from "algoliasearch/lite"
-
-import { Root, SearchBox, HitsWrapper, By } from "./styles"
-import * as hitComps from "./hits"
-
-const events = [`mousedown`, `touchstart`]
-
-const noResultsStr = {
-  en: `No results for `,
-  de: `Keine Ergebnisse für `,
-}
-
-const resultsStr = {
-  en: [` result`, ` results`],
-  de: [` Ergebnis`, ` Ergebnisse`],
-}
+import algoliasearch from 'algoliasearch/lite'
+import React, { createRef, useMemo, useState } from 'react'
+import { connectStateResults, Index, InstantSearch } from 'react-instantsearch-dom'
+import { useOnClickOutside } from 'hooks'
+import Hits from './Hits'
+import Input from './Input'
+import { HitsWrapper, PoweredBy, Root } from './styles'
 
 const Results = connectStateResults(
-  ({ searchState: state, searchResults: res, children }) =>
-    res && res.nbHits
-      ? children
-      : noResultsStr[process.env.GATSBY_LANG || `en`] + state.query
+  ({ searching, searchState: state, searchResults: res }) =>
+    (searching && <div>Suche läuft...</div>) ||
+    (res && res.nbHits === 0 && (
+      <div>Keine Ergebnisse für &apos;{state.query}&apos;</div>
+    ))
 )
 
 const Stats = connectStateResults(
-  ({ searchResults: res }) =>
-    res &&
-    res.nbHits > 0 &&
-    res.nbHits +
-      resultsStr[process.env.GATSBY_LANG || `en`][res.nbHits > 1 ? 1 : 0]
+  ({ searchResults: res }) => res && res.nbHits > 0 && `${res.nbHits} Treffer`
 )
 
-export default class Search extends Component {
-  state = { query: ``, focussed: false, ref: createRef() }
-  searchClient = algoliasearch(
-    process.env.GATSBY_ALGOLIA_APP_ID,
-    process.env.GATSBY_ALGOLIA_SEARCH_KEY
-  )
-
-  updateState = state => this.setState(state)
-
-  focus = () => {
-    this.setState({ focussed: true })
-  }
-
-  disableHits = () => {
-    this.setState({ focussed: false })
-  }
-
-  handleClickOutside = event => {
-    if (!this.state.ref.current.contains(event.target)) {
-      this.setState({ focussed: false })
-    }
-  }
-
-  componentDidMount() {
-    events.forEach(event =>
-      document.addEventListener(event, this.handleClickOutside)
-    )
-  }
-
-  componentWillUnmount() {
-    events.forEach(event =>
-      document.removeEventListener(event, this.handleClickOutside)
-    )
-  }
-
-  render() {
-    const { query, focussed, ref } = this.state
-    const { indices, collapse, hitsAsGrid } = this.props
-    return (
+export default function Search({ indices, collapse }) {
+  const ref = createRef()
+  const [query, setQuery] = useState(``)
+  const [focus, setFocus] = useState(false)
+  const appId = process.env.GATSBY_ALGOLIA_APP_ID
+  const searchKey = process.env.GATSBY_ALGOLIA_SEARCH_KEY
+  // useMemo prevents the searchClient from being recreated on every render.
+  // Avoids unnecessary XHR requests (see https://tinyurl.com/yyj93r2s).
+  const searchClient = useMemo(() => algoliasearch(appId, searchKey), [
+    appId,
+    searchKey,
+  ])
+  useOnClickOutside(ref, () => setFocus(false))
+  return (
+    <Root ref={ref}>
       <InstantSearch
-        searchClient={this.searchClient}
+        searchClient={searchClient}
         indexName={indices[0].name}
-        onSearchStateChange={this.updateState}
-        root={{ Root, props: { ref } }}
+        onSearchStateChange={({ query }) => setQuery(query)}
       >
-        <SearchBox onFocus={this.focus} {...{ collapse, focussed }} />
-        <HitsWrapper
-          show={query.length > 0 && focussed}
-          hitsAsGrid={hitsAsGrid}
-        >
-          {indices.map(({ name, title, hitComp }) => (
+        <Input onFocus={() => setFocus(true)} {...{ collapse, focus }} />
+        <HitsWrapper show={query.length > 0 && focus}>
+          {indices.map(({ name, title, type }) => (
             <Index key={name} indexName={name}>
               <header>
                 <h3>{title}</h3>
                 <Stats />
               </header>
-              <Results>
-                <Hits hitComponent={hitComps[hitComp](this.disableHits)} />
-              </Results>
+              <Results />
+              <Hits type={type} onClick={() => setFocus(false)} />
             </Index>
           ))}
-          <By>
-            Powered by{` `}
-            <a href="https://www.algolia.com">
-              <Algolia size="1em" /> Algolia
-            </a>
-          </By>
+          <PoweredBy />
         </HitsWrapper>
       </InstantSearch>
-    )
-  }
+    </Root>
+  )
 }

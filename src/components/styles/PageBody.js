@@ -1,7 +1,7 @@
-import styled from "styled-components"
+import styled from 'styled-components'
 
-import imageRow from "./imageRow"
-import mediaQuery from "../../utils/mediaQuery"
+import imageRow from './imageRow'
+import mediaQuery from 'utils/mediaQuery'
 
 const PageBody = styled.main`
   display: grid;

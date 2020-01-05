@@ -1,6 +1,6 @@
-import styled from "styled-components"
+import styled from 'styled-components'
 
-import mediaQuery from "../../utils/mediaQuery"
+import mediaQuery from 'utils/mediaQuery'
 
 export const Container = styled.footer`
   background-color: ${props => props.theme.darkGray};
@@ -8,10 +8,10 @@ export const Container = styled.footer`
   color: ${props => props.theme.white};
   display: grid;
   grid-template-areas:
-    "copyright"
-    "donations"
-    "links"
-    "partners";
+    'copyright'
+    'donations'
+    'links'
+    'partners';
   justify-items: center;
   grid-gap: 4vh 6vw;
   a {
@@ -19,8 +19,8 @@ export const Container = styled.footer`
   }
   ${mediaQuery.minPhablet} {
     grid-template-areas:
-      "copyright donations"
-      "partners links";
+      'copyright donations'
+      'partners links';
   }
 `
 
@@ -39,6 +39,6 @@ export const Partners = styled.div`
   grid-area: partners;
   display: grid;
   grid-gap: 1em;
-  grid-template-areas: "title title";
+  grid-template-areas: 'title title';
   justify-items: center;
 `

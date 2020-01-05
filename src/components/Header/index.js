@@ -1,10 +1,10 @@
-import React from "react"
+import React from 'react'
 
-import { HeaderContainer, SiteTitle } from "./styles"
-import Nav, { navLinkStyle } from "../Nav"
-import Social from "../Social"
-import Search from "../Search"
-import Logo from "../../assets/logo"
+import { HeaderContainer, SiteTitle } from './styles'
+import Nav, { navLinkStyle } from '../Nav'
+import Social from '../Social'
+import Search from '../Search'
+import Logo from 'assets/logo'
 
 const searchIndices = [
   { name: `Pages`, title: `Seiten`, hitComp: `PageHit` },

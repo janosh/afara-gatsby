@@ -1,5 +1,5 @@
-const pageQuery = `{
-  pages: allContentfulPage {
+const queryTemplate = (type, fields = ``) => `{
+  items: allContentful${type} {
     edges {
       node {
         objectID: id
@@ -14,61 +14,45 @@ const pageQuery = `{
             }
           }
         }
+        ${fields}
       }
     }
   }
 }`
 
-const postQuery = `{
-  posts: allContentfulPost {
-    edges {
-      node {
-        objectID: id
-        slug
-        title
-        date(formatString: "MMM DD, YYYY")
-        author {
-          name
-          email
-        }
-        tags {
-          title
-          slug
-        }
-        body {
-          remark: childMarkdownRemark {
-            excerpt(pruneLength: 5000)
-            headings {
-              value
-              depth
-            }
-          }
-        }
-      }
-    }
+const postFields = `
+  date(formatString: "MMM DD, YYYY")
+  author {
+    name
+    email
   }
-}`
+  tags {
+    title
+    slug
+  }
+`
+
+const flatten = arr =>
+  arr.map(({ node: { body, slug, ...rest } }) => ({
+    ...(body && body.remark),
+    slug: (`/` + slug).replace(`//`, `/`),
+    ...rest,
+  }))
+
+const settings = { attributesToSnippet: [`excerpt:20`] }
 
 const queries = [
   {
-    query: pageQuery,
-    transformer: ({ data }) =>
-      data.pages.edges.map(({ node: { body, ...rest } }) => ({
-        ...(body && body.remark),
-        ...rest,
-      })),
+    query: queryTemplate(`Page`),
+    transformer: res => flatten(res.data.items.edges),
     indexName: `Pages`,
-    settings: { attributesToSnippet: [`excerpt:20`] },
+    settings,
   },
   {
-    query: postQuery,
-    transformer: ({ data }) =>
-      data.posts.edges.map(({ node: { body, ...rest } }) => ({
-        ...(body && body.remark),
-        ...rest,
-      })),
+    query: queryTemplate(`Post`, postFields),
+    transformer: res => flatten(res.data.items.edges),
     indexName: `Posts`,
-    settings: { attributesToSnippet: [`excerpt:20`] },
+    settings,
   },
 ]
 

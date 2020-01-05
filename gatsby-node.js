@@ -16,27 +16,33 @@ const contentfulQuery = contentType => `
 `
 
 const pageSets = [
-  {
-    query: contentfulQuery(`Page`),
-    component: pageTemplate,
-  },
-  {
-    query: contentfulQuery(`Post`),
-    component: postTemplate,
-    pathPrefix: `/blog`,
-  },
+  [contentfulQuery(`Page`), pageTemplate],
+  [contentfulQuery(`Post`), postTemplate],
 ]
 
-exports.createPages = ({ graphql, actions: { createPage } }) => {
-  pageSets.forEach(async ({ query, component, pathPrefix = `` }) => {
-    const response = await graphql(query)
-    if (response.errors) throw new Error(response.errors)
-    response.data.content.edges.forEach(({ node: { slug } }) => {
-      createPage({
-        path: pathPrefix + (slug === `#` ? `` : slug),
-        component,
-        context: { slug },
+exports.createPages = async ({ graphql, actions: { createPage } }) => {
+  await Promise.all(
+    pageSets.map(async ([query, component]) => {
+      const response = await graphql(query)
+      if (response.errors) throw new Error(response.errors)
+      response.data.content.edges.forEach(edge => {
+        const { slug } = edge.node
+        createPage({ path: slug, component, context: { slug } })
       })
     })
+  )
+}
+
+exports.onCreateNode = ({ node }) => {
+  if (node.internal.type === `ContentfulPost`) node.slug = `/blog/` + node.slug
+}
+
+// Enable absolute imports from `src`.
+// See https://gatsbyjs.org/docs/add-custom-webpack-config#absolute-imports.
+exports.onCreateWebpackConfig = ({ actions }) => {
+  actions.setWebpackConfig({
+    resolve: {
+      modules: [path.resolve(__dirname, `src`), `node_modules`],
+    },
   })
 }

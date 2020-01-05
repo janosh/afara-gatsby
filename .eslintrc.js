@@ -1,10 +1,11 @@
 /*
 #!/bin/sh
 #
-# Pre-commit hook called by "git commit".
+# Pre-commit hook called by "git commit" with no arguments.
 # Checks staged .js(x) files for eslint errors.
-# Exits with non-zero status after issuing an error if a commit is prevented.
-# To install, copy this script to {projectRoot}/.git/hooks/pre-commit
+# Exits with non-zero status after issuing an appropriate message if
+# it wants to stop the commit.
+# Place in {projectRoot}/.git/hooks/pre-commit
 
 git diff --diff-filter=d --cached --name-only | grep "\.js.\?$" | xargs ./node_modules/.bin/eslint
 */
@@ -40,5 +41,9 @@ module.exports = {
     react: {
       version: 'detect',
     },
+  },
+  globals: {
+    globalThis: false, // false means it is not writeable.
+    // See https://github.com/eslint/eslint/issues/11553.
   },
 }

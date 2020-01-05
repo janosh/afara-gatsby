@@ -1,9 +1,9 @@
-import styled, { css } from "styled-components"
-import { Link } from "gatsby"
-import { Close } from "styled-icons/material/Close"
-import { Menu } from "styled-icons/feather/Menu"
+import styled, { css } from 'styled-components'
+import { Link } from 'gatsby'
+import { Close } from 'styled-icons/material/Close'
+import { Menu } from 'styled-icons/feather/Menu'
 
-import mediaQuery from "../../utils/mediaQuery"
+import mediaQuery from 'utils/mediaQuery'
 
 export const navLinkStyle = css`
   color: ${props => props.theme.white};

@@ -1,13 +1,13 @@
-import React, { Fragment } from "react"
-import PropTypes from "prop-types"
-import { Link } from "gatsby"
+import React, { Fragment } from 'react'
+import PropTypes from 'prop-types'
+import { Link } from 'gatsby'
 
-import { UserEdit } from "styled-icons/fa-solid/UserEdit"
-import { Calendar as Date } from "styled-icons/octicons/Calendar"
-import { Timer } from "styled-icons/material/Timer"
-import { Tags } from "styled-icons/fa-solid/Tags"
+import { UserEdit } from 'styled-icons/fa-solid/UserEdit'
+import { Calendar as Date } from 'styled-icons/octicons/Calendar'
+import { Timer } from 'styled-icons/material/Timer'
+import { Tags } from 'styled-icons/fa-solid/Tags'
 
-import { Meta, AuthorPhoto } from "./styles"
+import { Meta, AuthorPhoto } from './styles'
 
 const PostMeta = ({ author, date, tags, body, inTitle, iconSize }) => (
   <>

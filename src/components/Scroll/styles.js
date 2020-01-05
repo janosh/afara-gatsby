@@ -1,46 +1,25 @@
-import styled, { css } from 'styled-components'
-import { ArrowUpCircle } from 'styled-icons/feather/ArrowUpCircle'
-import { ArrowDownCircle } from 'styled-icons/feather/ArrowDownCircle'
+import styled from 'styled-components'
+import { ArrowDownCircle as Down } from 'styled-icons/feather/ArrowDownCircle'
+import { ArrowUpCircle as Up } from 'styled-icons/feather/ArrowUpCircle'
 
-const align = props => {
-  switch (props.align) {
-    case `left`:
-      return `left: 1em;`
-    case `right`:
-      return `right: 1em;`
-    case `center`:
-    default:
-      return `left: calc(50vw - ${props.size} / 2);`
-  }
-}
-
-const arrow = css`
+export const Arrow = styled(Down).attrs(props => ({
+  as: props.direction === `up` && Up,
+}))`
   z-index: 2;
-  background: ${props => props.theme.lightGreen};
-  color: ${props => props.theme.white};
-  border-radius: 50%;
-  transition: ${props => props.theme.shortTrans};
-  width: ${props => props.size};
-  position: ${props => props.position};
+  background: ${props => props.theme.lightGreen} !important;
+  border-radius: 50% !important;
+  padding: 0 !important;
+  color: white;
+  transition: 0.3s;
+  position: absolute;
   bottom: 1em;
-  ${props => align(props)};
+  right: calc(50vw - ${props => props.size} / 2);
   opacity: ${props => (props.show ? 1 : 0)};
   visibility: ${props => (props.show ? `visible` : `hidden`)};
+  width: ${props => props.size};
+  height: ${props => props.size};
   :hover {
     transform: scale(1.15);
     background: ${props => props.theme.orange};
   }
 `
-
-export const UpArrow = styled(ArrowUpCircle)`
-  ${arrow};
-`
-
-export const DownArrow = styled(ArrowDownCircle)`
-  ${arrow};
-`
-
-export const Arrows = {
-  up: UpArrow,
-  down: DownArrow,
-}

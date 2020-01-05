@@ -1,19 +1,18 @@
-import React, { useState } from "react"
-import { graphql } from "gatsby"
+import React, { useState } from 'react'
+import { graphql } from 'gatsby'
 
-import Global from "../components/Global"
-import PageTitle from "../components/PageTitle"
-import TagList from "../components/TagList"
-import PostList from "../components/PostList"
-import PageBody from "../components/styles/PageBody"
+import Global from 'components/Global'
+import PageTitle from 'components/PageTitle'
+import TagList from 'components/TagList'
+import PostList from 'components/PostList'
+import PageBody from 'components/styles/PageBody'
 
 const filterPostsByTag = (tag, posts) =>
   tag === `alle`
     ? posts
     : posts.filter(({ node }) => node.tags.map(tag => tag.slug).includes(tag))
 
-const readActiveTagFromUrl = urlParams =>
-  urlParams.replace(/.*tag=([^&]+).*/, `$1`)
+const readActiveTagFromUrl = urlParams => urlParams.replace(/.*tag=([^&]+).*/, `$1`)
 
 const BlogPage = ({ data, location }) => {
   const { posts, tags } = data

@@ -39,6 +39,7 @@
     "eslint": "^6.6.0",
     "eslint-plugin-react": "^7.16.0",
     "eslint-plugin-react-hooks": "^2.3.0",
+    "prettier": "^1.19.1",
     "prop-types": "^15.7.2"
   },
   "scripts": {
@@ -62,5 +63,11 @@
     "node_modules",
     ".cache",
     "public"
-  ]
+  ],
+  "prettier": {
+    "trailingComma": "es5",
+    "semi": false,
+    "singleQuote": true,
+    "printWidth": 85
+  }
 }

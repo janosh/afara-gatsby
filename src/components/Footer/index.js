@@ -1,8 +1,7 @@
 import React from 'react'
-import { graphql, useStaticQuery } from 'gatsby'
+import { graphql, useStaticQuery, Link } from 'gatsby'
 import Img from 'gatsby-image'
 
-import Link from '../Link'
 import { Container, Links, Partners } from './styles'
 
 export default function Footer() {

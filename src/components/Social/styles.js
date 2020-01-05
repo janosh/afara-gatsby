@@ -1,12 +1,9 @@
-import styled, { css } from "styled-components"
-import { Share } from "styled-icons/material/Share"
-import { Email } from "styled-icons/material/Email"
-import { Youtube } from "styled-icons/fa-brands/Youtube"
-import { LinkedinIn as Linkedin } from "styled-icons/fa-brands/LinkedinIn"
-import { FacebookF as Facebook } from "styled-icons/fa-brands/FacebookF"
-import { Github } from "styled-icons/fa-brands/Github"
+import styled, { css } from 'styled-components'
+import { Share } from 'styled-icons/material/Share'
+import { FacebookF as Facebook } from 'styled-icons/fa-brands/FacebookF'
+import { Instagram } from 'styled-icons/boxicons-logos/Instagram'
 
-import mediaQuery from "../../utils/mediaQuery"
+import mediaQuery from '../../utils/mediaQuery'
 
 export const Wrapper = styled.div`
   position: relative;
@@ -63,14 +60,6 @@ export const Link = styled.a`
 `
 
 export const Icons = {
-  Email: styled(Email)`
-    vertical-align: -0.15em;
-    transform: scale(1, 1.15);
-  `,
-  Youtube: styled(Youtube)`
-    transform: scale(1, 1.15);
-  `,
-  Linkedin,
   Facebook,
-  Github,
+  Instagram,
 }

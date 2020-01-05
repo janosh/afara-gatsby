@@ -1,7 +1,7 @@
-import React, { Component, createRef } from "react"
-import { DownArrow } from "styled-icons/boxicons-regular/DownArrow"
+import React, { Component, createRef } from 'react'
+import { DownArrow } from 'styled-icons/boxicons-regular/DownArrow'
 
-import { NavContainer, NavEntry, SubNav, NavLink, Toggle } from "./styles"
+import { NavContainer, NavEntry, SubNav, NavLink, Toggle } from './styles'
 
 const events = [
   { event: `mousedown`, handler: `handleClickOutside` },
