@@ -1,0 +1,11 @@
+[build]
+  publish = "public"
+
+[build.environment]
+  NODE_VERSION = "12.12.0"
+  YARN_VERSION = "1.21.1"
+
+[[redirects]]
+  from = "https://afara.netlify.com/*"
+  to = "https://afara.foundation/:splat"
+  force = true
