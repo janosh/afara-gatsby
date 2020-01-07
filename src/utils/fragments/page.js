@@ -24,13 +24,15 @@ export const query = graphql`
     slideshow {
       slides {
         title
-        image {
-          fluid(quality: 90, maxWidth: 1500) {
-            ...GatsbyContentfulFluid_withWebp
-          }
+        fluid(quality: 90, maxWidth: 1500) {
+          ...GatsbyContentfulFluid_withWebp
         }
       }
     }
-    titleHeight
+    options {
+      titleHeight
+      showToc
+    }
+    updatedAt(formatString: "D. MMM YYYY", locale: "de")
   }
 `

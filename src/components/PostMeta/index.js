@@ -25,8 +25,7 @@ const PostMeta = ({ author, date, tags, body, inTitle, iconSize }) => (
       </span>
       <span>
         <Timer size={iconSize} />
-        &nbsp;
-        {body.remark.timeToRead} min read
+        &nbsp; Länge: {body.remark.timeToRead} min
       </span>
     </Meta>
     {!inTitle && (
@@ -37,7 +36,7 @@ const PostMeta = ({ author, date, tags, body, inTitle, iconSize }) => (
         {tags.map(({ title, slug }, index) => (
           <Fragment key={slug}>
             {index > 0 && `, `}
-            <Link to={`/blog` + slug}>{title}</Link>
+            {title}
           </Fragment>
         ))}
       </div>

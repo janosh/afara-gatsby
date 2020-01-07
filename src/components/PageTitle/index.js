@@ -21,12 +21,12 @@ export default function PageTitle({ children, slideshow, cover, backdrop, height
       <Background height={height}>
         {slideshow ? (
           <Slideshow>
-            {slideshow.slides.map(({ title, image }) => (
-              <Img key={title} fluid={image.fluid} />
+            {slideshow.slides.map(({ title, fluid }) => (
+              <Img key={title} fluid={fluid} alt={title} />
             ))}
           </Slideshow>
         ) : (
-          <Img {...(cover || defaultBg)} />
+          <Img {...(cover || defaultBg)} alt={(cover || defaultBg).title} />
         )}
       </Background>
       <Title backdrop={backdrop}>{children}</Title>

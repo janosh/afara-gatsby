@@ -4,7 +4,7 @@ import { graphql } from 'gatsby'
 import Global from 'components/Global'
 import PageTitle from 'components/PageTitle'
 import PostMeta from 'components/PostMeta'
-import PageBody from 'components/styles/PageBody'
+import PageBody from 'components/PageBody'
 
 export default function PostTemplate({ data, location }) {
   const { title, body, cover } = data.post
@@ -15,7 +15,7 @@ export default function PostTemplate({ data, location }) {
         <h1>{title}</h1>
         <PostMeta inTitle {...data.post} />
       </PageTitle>
-      <PageBody dangerouslySetInnerHTML={{ __html: html }} />
+      <PageBody html={html} />
     </Global>
   )
 }

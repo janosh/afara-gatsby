@@ -21,7 +21,7 @@ const queryTemplate = (type, fields = ``) => `{
 }`
 
 const postFields = `
-  date(formatString: "MMM DD, YYYY")
+  date(formatString: "MMM DD, YYYY", locale: "de")
   author {
     name
     email

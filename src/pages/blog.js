@@ -5,7 +5,7 @@ import Global from 'components/Global'
 import PageTitle from 'components/PageTitle'
 import TagList from 'components/TagList'
 import PostList from 'components/PostList'
-import PageBody from 'components/styles/PageBody'
+import PageBody from 'components/PageBody'
 
 const filterPostsByTag = (tag, posts) =>
   tag === `alle`

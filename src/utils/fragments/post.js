@@ -17,7 +17,7 @@ export const query = graphql`
       title
       slug
     }
-    date(formatString: "MMM D, YYYY")
+    date(formatString: "MMM D, YYYY", locale: "de")
     body {
       remark: childMarkdownRemark {
         html
