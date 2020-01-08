@@ -3,8 +3,8 @@ import styled from 'styled-components'
 export const Post = styled.article`
   height: 100%;
   display: grid;
-  background: ${props => props.theme.veryLightGray};
-  border-radius: ${props => props.theme.mediumBorderRadius};
+  background: ${props => props.theme.lighterGray};
+  border-radius: 0.5em;
   border: 1px solid ${props => props.theme.lightGray};
   overflow: hidden;
   > main {

@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components'
 
-export const PageTitleContainer = styled.hgroup`
-  color: ${props => props.theme.white};
+export const PageTitleDiv = styled.hgroup`
+  color: white;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -22,7 +22,7 @@ export const Background = styled.div`
 const backdrop = css`
   > * {
     background: rgba(0, 0, 0, 0.7);
-    border-radius: ${props => props.theme.smallBorderRadius};
+    border-radius: 0.2em;
     justify-self: center;
     padding: 0.1em 0.4em;
   }

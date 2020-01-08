@@ -55,7 +55,7 @@ export const Input = styled.input`
   font-size: 1em;
   background: transparent;
   transition: 0.3s;
-  border-radius: ${props => props.theme.smallBorderRadius};
+  border-radius: 0.2em;
   ${props => (props.collapse ? collapse : expand)};
 `
 
@@ -78,7 +78,7 @@ export const HitsWrapper = styled.div`
   max-width: 30em;
   box-shadow: 0 0 5px 0;
   padding: 0.7em 1em 0.4em;
-  border-radius: ${props => props.theme.smallBorderRadius};
+  border-radius: 0.2em;
   * {
     margin-top: 0;
   }
@@ -101,7 +101,7 @@ export const HitsWrapper = styled.div`
       color: white;
       background: ${props => props.theme.lightGreen};
       padding: 0.1em 0.4em;
-      border-radius: ${props => props.theme.smallBorderRadius};
+      border-radius: 0.2em;
       margin-bottom: 0.3em;
     }
   }

@@ -3,7 +3,7 @@ import { useStaticQuery, graphql } from 'gatsby'
 import Img from 'gatsby-image'
 import Slideshow from 'components/Slideshow'
 
-import { PageTitleContainer, Background, Title } from './styles'
+import { PageTitleDiv, Background, Title } from './styles'
 
 export default function PageTitle({ children, slideshow, cover, backdrop, height }) {
   const { defaultBg } = useStaticQuery(graphql`
@@ -17,7 +17,7 @@ export default function PageTitle({ children, slideshow, cover, backdrop, height
     }
   `)
   return (
-    <PageTitleContainer height={height}>
+    <PageTitleDiv height={height}>
       <Background height={height}>
         {slideshow ? (
           <Slideshow>
@@ -30,6 +30,6 @@ export default function PageTitle({ children, slideshow, cover, backdrop, height
         )}
       </Background>
       <Title backdrop={backdrop}>{children}</Title>
-    </PageTitleContainer>
+    </PageTitleDiv>
   )
 }

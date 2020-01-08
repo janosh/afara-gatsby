@@ -15,11 +15,11 @@ const collapse = css`
   visibility: hidden;
   opacity: 0;
   position: absolute;
-  background: ${props => props.theme.black};
-  border-radius: ${props => props.theme.smallBorderRadius};
+  background: black;
+  border-radius: 0.2em;
   padding: 1vmin;
   font-size: 1.6em;
-  transition: ${props => props.theme.shortTrans};
+  transition: 0.3s;
   ${Wrapper}:hover & {
     visibility: visible;
     opacity: 1;

@@ -6,8 +6,8 @@ import { Menu } from 'styled-icons/feather/Menu'
 import mediaQuery from 'utils/mediaQuery'
 
 export const navLinkStyle = css`
-  color: ${props => props.theme.white};
-  transition: ${props => props.theme.shortTrans};
+  color: white;
+  transition: 0.3s;
   cursor: pointer;
   &.active {
     color: ${props => props.theme.orange};
@@ -33,7 +33,7 @@ export const NavContainer = styled.nav`
     grid-auto-columns: minmax(max-content, 1fr);
     grid-auto-rows: max-content;
     transform: translate(${props => (props.showNav ? `99%` : `0`)});
-    transition: ${props => props.theme.mediumTrans};
+    transition: 0.6s;
   }
   ${mediaQuery.minPhablet} {
     grid-auto-flow: column;
@@ -56,7 +56,7 @@ const subNavVisible = css`
 export const SubNav = styled.div`
   display: grid;
   width: max-content;
-  border-radius: ${props => props.theme.smallBorderRadius};
+  border-radius: 0.2em;
   grid-gap: 0.2em 0.5em;
   opacity: 0;
   position: absolute;
@@ -78,7 +78,7 @@ export const SubNav = styled.div`
 
 const span = css`
   grid-column: 1/-1;
-  border-top: 1px solid ${props => props.theme.white};
+  border-top: 1px solid white;
   padding-top: 0.2em;
 `
 
@@ -88,7 +88,7 @@ export const NavLink = styled(Link).attrs({
 })`
   ${navLinkStyle};
   ${SubNav} & {
-    color: ${props => props.theme.white};
+    color: white;
     :hover {
       color: ${props => props.theme.lightGreen};
     }

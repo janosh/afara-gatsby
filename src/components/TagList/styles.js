@@ -27,7 +27,7 @@ export const TagIcon = styled.img`
   min-width: 1.75em;
   margin-right: 0.7em;
   background: ${props => props.theme.lightGray};
-  border-radius: ${props => props.theme.mediumBorderRadius};
+  border-radius: 0.5em;
   padding: 0.2em;
 `
 

@@ -7,14 +7,14 @@ const inTitle = css`
   justify-items: center;
   padding: 0.2em 1em;
   background: rgba(0, 0, 0, 0.6);
-  border-radius: ${props => props.theme.mediumBorderRadius};
+  border-radius: 0.5em;
   font-size: 0.8em;
   width: max-content;
   margin: auto;
   > :not(:first-child) {
     ${mediaQuery.minPhone} {
       padding-left: 0.7em;
-      border-left: ${props => props.theme.smallBorder} solid;
+      border-left: 0.1em solid;
     }
   }
   a {

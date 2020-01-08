@@ -5,7 +5,7 @@ import mediaQuery from 'utils/mediaQuery'
 export const Container = styled.footer`
   background-color: ${props => props.theme.darkGray};
   padding: 5vh 5vw;
-  color: ${props => props.theme.white};
+  color: white;
   display: grid;
   grid-template-areas:
     'copyright'
