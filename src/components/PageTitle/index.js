@@ -19,7 +19,7 @@ export default function PageTitle({ children, slideshow, cover, height = 60 }) {
       {slideshow ? (
         <Slideshow>
           {slideshow.slides.map(slide => (
-            <Img key={slide.title} {...slide} />
+            <Img key={slide.title} {...slide} css="height: 100%;" />
           ))}
         </Slideshow>
       ) : (

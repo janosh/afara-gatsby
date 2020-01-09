@@ -1,56 +1,28 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import React, { useState, useEffect } from 'react'
 
 import Dots from '../Dots'
-import { SlideContainer, Slide } from './styles'
+import { Slides, Slide } from './styles'
 
-export default class Slideshow extends Component {
-  static propTypes = {
-    children: PropTypes.array.isRequired,
-    delay: PropTypes.number.isRequired,
-  }
+export default function Slideshow({ children, duration = 6.5 }) {
+  const [current, setCurrent] = useState(0)
 
-  static defaultProps = {
-    delay: 6.5,
-  }
+  const next = () => setCurrent((current + 1) % children.length)
 
-  state = { current: 0 }
+  const jumpTo = index => setCurrent(index)
 
-  next = () => {
-    this.setState({
-      current: (this.state.current + 1) % this.props.children.length,
-    })
-  }
+  useEffect(() => {
+    const intervalId = setInterval(next, duration * 1000)
+    return () => clearInterval(intervalId)
+  })
 
-  jumpTo = index => {
-    clearInterval(this.interval)
-    this.interval = setInterval(() => this.next(), this.props.delay * 1000)
-    this.setState({
-      current: index,
-    })
-  }
-
-  componentDidMount() {
-    this.interval = setInterval(this.next, this.props.delay * 1000)
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.interval)
-  }
-
-  render() {
-    const { current } = this.state
-    const { children, delay } = this.props
-    const dotProps = { current, length: children.length, onClick: this.jumpTo }
-    return (
-      <SlideContainer>
-        {children.map((child, index) => (
-          <Slide active={index === current} key={index} delay={delay}>
-            {child}
-          </Slide>
-        ))}
-        <Dots {...dotProps} />
-      </SlideContainer>
-    )
-  }
+  return (
+    <Slides>
+      {children.map((child, index) => (
+        <Slide active={index === current} key={index} duration={duration}>
+          {child}
+        </Slide>
+      ))}
+      <Dots {...{ current, length: children.length, onClick: jumpTo }} />
+    </Slides>
+  )
 }
