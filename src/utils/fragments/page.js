@@ -17,16 +17,11 @@ export const query = graphql`
       }
     }
     cover {
-      fluid {
-        ...GatsbyContentfulFluid_withWebp
-      }
+      ...fluid
     }
     slideshow {
       slides {
-        title
-        fluid(quality: 90, maxWidth: 1500) {
-          ...GatsbyContentfulFluid_withWebp
-        }
+        ...fluid
       }
     }
     options {

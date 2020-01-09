@@ -6,7 +6,7 @@ import PageTitle from 'components/PageTitle'
 import PageBody from 'components/PageBody'
 import Toc from 'components/Toc'
 
-const PageTemplate = ({ data, location }) => {
+export default function PageTemplate({ data, location }) {
   const { title, subtitle, body, cover, slideshow, options, updatedAt } = data.page
   const { titleHeight: height, showToc } = options || {}
   const { excerpt } = (body && body.remark) || subtitle.remark
@@ -15,7 +15,7 @@ const PageTemplate = ({ data, location }) => {
       <PageTitle {...{ slideshow, cover, height }}>
         <h1>{title}</h1>
         {subtitle && (
-          <h2 dangerouslySetInnerHTML={{ __html: subtitle.remark.html }} />
+          <div dangerouslySetInnerHTML={{ __html: subtitle.remark.html }} />
         )}
       </PageTitle>
       {body && (
@@ -26,8 +26,6 @@ const PageTemplate = ({ data, location }) => {
     </Global>
   )
 }
-
-export default PageTemplate
 
 export const query = graphql`
   query($slug: String!) {

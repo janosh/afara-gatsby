@@ -1,35 +1,31 @@
 import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import Img from 'gatsby-image'
-import Slideshow from 'components/Slideshow'
+import Slideshow from '../Slideshow'
 
-import { PageTitleDiv, Background, Title } from './styles'
+import { PageTitleDiv, Title } from './styles'
 
-export default function PageTitle({ children, slideshow, cover, backdrop, height }) {
+export default function PageTitle({ children, slideshow, cover, height = 60 }) {
   const { defaultBg } = useStaticQuery(graphql`
     {
       defaultBg: contentfulAsset(title: { eq: "Jubelnde Menschen" }) {
-        title
-        fluid(quality: 90, maxWidth: 2000) {
-          ...GatsbyContentfulFluid_withWebp
-        }
+        ...fluid
       }
     }
   `)
+  if (!cover) cover = defaultBg
   return (
     <PageTitleDiv height={height}>
-      <Background height={height}>
-        {slideshow ? (
-          <Slideshow>
-            {slideshow.slides.map(({ title, fluid }) => (
-              <Img key={title} fluid={fluid} alt={title} />
-            ))}
-          </Slideshow>
-        ) : (
-          <Img {...(cover || defaultBg)} alt={(cover || defaultBg).title} />
-        )}
-      </Background>
-      <Title backdrop={backdrop}>{children}</Title>
+      {slideshow ? (
+        <Slideshow>
+          {slideshow.slides.map(slide => (
+            <Img key={slide.title} {...slide} />
+          ))}
+        </Slideshow>
+      ) : (
+        <Img {...cover} style={{ width: `100%`, height: height + `vh` }} />
+      )}
+      <Title>{children}</Title>
     </PageTitleDiv>
   )
 }

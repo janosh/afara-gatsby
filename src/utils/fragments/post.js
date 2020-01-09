@@ -26,10 +26,7 @@ export const query = graphql`
       }
     }
     cover {
-      title
-      fluid(quality: 100, maxWidth: 1500) {
-        ...GatsbyContentfulFluid_withWebp
-      }
+      ...fluid
     }
   }
 `
