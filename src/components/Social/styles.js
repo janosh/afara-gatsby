@@ -5,9 +5,8 @@ import { Instagram } from 'styled-icons/boxicons-logos/Instagram'
 
 import mediaQuery from '../../utils/mediaQuery'
 
-export const Wrapper = styled.div`
+export const SocialRoot = styled.a`
   position: relative;
-  align-self: center;
 `
 
 const collapse = css`
@@ -20,7 +19,7 @@ const collapse = css`
   padding: 1vmin;
   font-size: 1.6em;
   transition: 0.3s;
-  ${Wrapper}:hover & {
+  ${SocialRoot}:hover & {
     visibility: visible;
     opacity: 1;
   }
@@ -32,7 +31,7 @@ const alwaysShow = css`
   ${props => props.styles};
 `
 
-export const Container = styled.div`
+export const Div = styled.div`
   display: grid;
   justify-content: center;
   ${mediaQuery.maxTablet} {

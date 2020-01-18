@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { HeaderContainer, SiteTitle } from './styles'
-import Nav, { navLinkStyle } from '../Nav'
+import Nav from '../Nav'
 import Social from '../Social'
 import Search from '../Search'
 import Logo from 'assets/logo'
@@ -17,7 +17,7 @@ const Header = ({ site }) => (
       <Logo alt={site.title} />
     </SiteTitle>
     <Nav />
-    <Social collapse linkStyle={navLinkStyle} />
+    <Social collapse />
     <Search collapse indices={searchIndices} />
   </HeaderContainer>
 )

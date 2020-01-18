@@ -1,7 +1,7 @@
 import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 
-import { Wrapper, Container, Toggle, Link, Icons } from './styles'
+import { SocialRoot, Div, Toggle, Link, Icons } from './styles'
 
 export default function Social({ size = `1em`, collapse, linkStyle }) {
   const { social } = useStaticQuery(graphql`
@@ -15,9 +15,9 @@ export default function Social({ size = `1em`, collapse, linkStyle }) {
     }
   `)
   return (
-    <Wrapper>
+    <SocialRoot>
       {collapse && <Toggle {...{ size, styles: linkStyle }} />}
-      <Container collapse={collapse}>
+      <Div collapse={collapse}>
         {Object.keys(social.data).map(key => {
           const Icon = Icons[key]
           return (
@@ -26,7 +26,7 @@ export default function Social({ size = `1em`, collapse, linkStyle }) {
             </Link>
           )
         })}
-      </Container>
-    </Wrapper>
+      </Div>
+    </SocialRoot>
   )
 }

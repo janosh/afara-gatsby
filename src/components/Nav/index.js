@@ -1,39 +1,36 @@
 import React from 'react'
-import { StaticQuery, graphql } from 'gatsby'
-import PropTypes from 'prop-types'
-export { navLinkStyle } from './styles'
+import { useStaticQuery, graphql } from 'gatsby'
+import { useScreenQuery } from 'hooks'
+import MobileNav from './Mobile'
+import DesktopNav from './Desktop'
+import { Link } from 'gatsby'
 
-import Nav from './comp'
+export const NavLink = props => (
+  <Link activeClassName="active" partiallyActive {...props} />
+)
 
-const query = graphql`
-  {
-    nav: contentfulJson(title: { eq: "Nav" }) {
-      data {
-        nav {
-          url
-          title
-          subNav {
+export default function Nav(props) {
+  const { nav } = useStaticQuery(graphql`
+    {
+      nav: contentfulJson(title: { eq: "Nav" }) {
+        data {
+          nav {
             url
             title
+            subNav {
+              url
+              title
+            }
           }
         }
       }
     }
-  }
-`
-
-export default props => (
-  <StaticQuery
-    query={query}
-    render={data => <Nav {...data.nav.data} {...props} />}
-  />
-)
-
-Nav.propTypes = {
-  nav: PropTypes.arrayOf(
-    PropTypes.shape({
-      url: PropTypes.string.isRequired,
-      title: PropTypes.string.isRequired,
-    })
-  ).isRequired,
+  `)
+  const mobile = useScreenQuery(`maxNetbook`)
+  if (mobile) return <MobileNav {...nav.data} {...props} />
+  // Only render DesktopNav if screen query is false.
+  if (mobile === false) return <DesktopNav {...nav.data} {...props} />
+  // Render nothing in SSR to avoid showing DesktopNav on mobile
+  // on initial page load from cleared cache.
+  return null
 }
