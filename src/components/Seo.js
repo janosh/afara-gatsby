@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Helmet } from 'react-helmet'
+import favicon from 'assets/favicon.svg'
 
 export default function Seo({ site, pageTitle, path = ``, ...rest }) {
   const { description, children } = rest
@@ -16,6 +17,7 @@ export default function Seo({ site, pageTitle, path = ``, ...rest }) {
       <meta property="og:url" content={pageUrl} />
       <meta property="og:description" content={desc} />
       <meta name="description" content={desc} />
+      <link rel="icon" href={favicon} type="image/svg+xml" sizes="any" />
       {children}
     </Helmet>
   )

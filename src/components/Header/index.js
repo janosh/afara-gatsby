@@ -4,7 +4,7 @@ import { HeaderContainer, SiteTitle } from './styles'
 import Nav from '../Nav'
 import Social from '../Social'
 import Search from '../Search'
-import Logo from 'assets/logo'
+import logo from 'assets/favicon.svg'
 
 const searchIndices = [
   { name: `Pages`, title: `Seiten`, hitComp: `PageHit` },
@@ -13,8 +13,8 @@ const searchIndices = [
 
 const Header = ({ site }) => (
   <HeaderContainer>
-    <SiteTitle to="/" title={site.title} rel="home">
-      <Logo alt={site.title} />
+    <SiteTitle to="/" aria-label={site.title} rel="home">
+      <img src={logo} alt={site.title} />
     </SiteTitle>
     <Nav />
     <Social collapse />
