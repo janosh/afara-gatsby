@@ -1,4 +1,4 @@
-const theme = {
+export const colors = {
   blue: `#2A4FA8`,
   darkBlue: `#002e9d`,
   lightBlue: `#97C9F4`,
@@ -17,8 +17,14 @@ const theme = {
   lightGray: `#dcdcdc`,
   gray: `#2b363f`,
   darkGray: `#1d242a`,
-
-  maxWidth: `40em`,
 }
 
-export default theme
+export const typography = {
+  baseFont: `-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif`,
+  headingFont: `papyrus`,
+  // font sizes and line heights in em units
+  minFontSize: 1,
+  maxFontSize: 1.3,
+  minLineHeight: 1.5,
+  maxLineHeight: 1.8,
+}

@@ -5,7 +5,7 @@ import { ThemeProvider } from 'styled-components'
 import Seo from '../Seo'
 import Header from '../Header'
 import Footer from '../Footer'
-import theme from 'utils/theme'
+import { colors } from 'utils/theme'
 import Scroll from '../Scroll'
 
 import { GlobalStyle } from './styles'
@@ -23,7 +23,7 @@ export default function Global({ children, path, ...rest }) {
     }
   `)
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={colors}>
       <>
         <Seo {...site} path={path} {...rest} />
         <GlobalStyle />
