@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components'
-import { Share } from 'styled-icons/material/Share'
-import { FacebookF as Facebook } from 'styled-icons/fa-brands/FacebookF'
-import { Instagram } from 'styled-icons/boxicons-logos/Instagram'
+import { Share } from 'styled-icons/material'
+import { FacebookF as Facebook } from 'styled-icons/fa-brands'
+import { Instagram } from 'styled-icons/boxicons-logos'
 
 import mediaQuery from '../../utils/mediaQuery'
 

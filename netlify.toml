@@ -2,8 +2,8 @@
   publish = "public"
 
 [build.environment]
-  NODE_VERSION = "12.12.0"
-  YARN_VERSION = "1.21.1"
+  NODE_VERSION = "14.5.0"
+  YARN_VERSION = "1.22.4"
 
 [[redirects]]
   from = "https://afara.netlify.com/*"

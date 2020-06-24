@@ -1,11 +1,11 @@
 import { animated } from 'react-spring'
 import styled, { css } from 'styled-components'
-import { Menu } from 'styled-icons/boxicons-regular/Menu'
-import { Close as Cross } from 'styled-icons/material/Close'
+import { Menu } from 'styled-icons/boxicons-regular'
+import { Close as Cross } from 'styled-icons/material'
 import mediaQuery from 'utils/mediaQuery'
 
-export { KeyboardArrowDown as ArrowDown } from 'styled-icons/material/KeyboardArrowDown'
-export { KeyboardArrowUp as ArrowUp } from 'styled-icons/material/KeyboardArrowUp'
+export { KeyboardArrowDown as ArrowDown } from 'styled-icons/material'
+export { KeyboardArrowUp as ArrowUp } from 'styled-icons/material'
 
 export const MobileNavDiv = styled.nav`
   overscroll-behavior: none;
