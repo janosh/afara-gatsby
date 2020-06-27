@@ -1,9 +1,9 @@
 import styled, { css } from 'styled-components'
-import mediaQuery from 'utils/mediaQuery'
+import { mediaQueries } from 'utils/mediaQueries'
 
 const imageRow = css`
   div.image-row {
-    ${mediaQuery.minTablet} {
+    ${mediaQueries.minTablet} {
       display: grid;
       grid-auto-flow: column;
       grid-gap: calc(0.5em + 1vw);
@@ -33,7 +33,7 @@ export const Body = styled.div`
   > main {
     grid-column: 3;
   }
-  ${mediaQuery.minPhablet} {
+  ${mediaQueries.minPhablet} {
     p {
       text-align: justify;
     }

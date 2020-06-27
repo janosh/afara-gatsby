@@ -1,9 +1,9 @@
 import styled from 'styled-components'
 
-import mediaQuery from 'utils/mediaQuery'
+import { mediaQueries } from 'utils/mediaQueries'
 
 export const Container = styled.div`
-  ${mediaQuery.minTablet} {
+  ${mediaQueries.minTablet} {
     grid-column: 4;
   }
   h2 {

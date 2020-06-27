@@ -3,7 +3,7 @@ import { Share } from 'styled-icons/material'
 import { FacebookF as Facebook } from 'styled-icons/fa-brands'
 import { Instagram } from 'styled-icons/boxicons-logos'
 
-import mediaQuery from '../../utils/mediaQuery'
+import { mediaQueries } from 'utils/mediaQueries'
 
 export const SocialRoot = styled.a`
   position: relative;
@@ -34,10 +34,10 @@ const alwaysShow = css`
 export const Div = styled.div`
   display: grid;
   justify-content: center;
-  ${mediaQuery.maxTablet} {
+  ${mediaQueries.maxTablet} {
     ${props => (props.collapse ? collapse : alwaysShow)};
   }
-  ${mediaQuery.minTablet} {
+  ${mediaQueries.minTablet} {
     ${alwaysShow};
   }
 `
@@ -46,7 +46,7 @@ export const Toggle = styled(Share)`
   cursor: pointer;
   font-size: 1.3em;
   ${props => props.styles};
-  ${mediaQuery.minTablet} {
+  ${mediaQueries.minTablet} {
     display: none;
   }
 `

@@ -2,7 +2,7 @@ import { animated } from 'react-spring'
 import styled, { css } from 'styled-components'
 import { Menu } from 'styled-icons/boxicons-regular'
 import { Close as Cross } from 'styled-icons/material'
-import mediaQuery from 'utils/mediaQuery'
+import { mediaQueries } from 'utils/mediaQueries'
 
 export { KeyboardArrowDown as ArrowDown } from 'styled-icons/material'
 export { KeyboardArrowUp as ArrowUp } from 'styled-icons/material'
@@ -78,7 +78,7 @@ export const NavToggle = styled(Cross).attrs(props => ({
   :hover {
     transform: scale(1.1);
   }
-  ${mediaQuery.minLaptop} {
+  ${mediaQueries.minLaptop} {
     display: none;
   }
   ${props => (props.opener ? openerCss : closerCss)};

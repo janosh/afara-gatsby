@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components'
 import Img from 'gatsby-image'
 
-import mediaQuery from 'utils/mediaQuery'
+import { mediaQueries } from 'utils/mediaQueries'
 
 const inTitle = css`
   justify-items: center;
@@ -12,7 +12,7 @@ const inTitle = css`
   width: max-content;
   margin: auto;
   > :not(:first-child) {
-    ${mediaQuery.minPhone} {
+    ${mediaQueries.minPhone} {
       padding-left: 0.7em;
       border-left: 0.1em solid;
     }
@@ -20,7 +20,7 @@ const inTitle = css`
   a {
     color: ${props => props.theme.lightBlue};
   }
-  ${mediaQuery.maxPhone} {
+  ${mediaQueries.maxPhone} {
     display: grid;
   }
 `

@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import mediaQuery from 'utils/mediaQuery'
+import { mediaQueries } from 'utils/mediaQueries'
 
 export const Container = styled.footer`
   background-color: ${props => props.theme.darkGray};
@@ -17,7 +17,7 @@ export const Container = styled.footer`
   a {
     color: ${props => props.theme.orange};
   }
-  ${mediaQuery.minPhablet} {
+  ${mediaQueries.minPhablet} {
     grid-template-areas:
       'copyright donations'
       'partners links';
@@ -29,7 +29,7 @@ export const Links = styled.nav`
   display: grid;
   grid-gap: 1em;
   justify-items: center;
-  ${mediaQuery.minPhone} {
+  ${mediaQueries.minPhone} {
     grid-template-columns: max-content;
     grid-auto-flow: column;
   }

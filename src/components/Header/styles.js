@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { Link } from 'gatsby'
-import mediaQuery from 'utils/mediaQuery'
+import { mediaQueries } from 'utils/mediaQueries'
 
 export const HeaderContainer = styled.header`
   z-index: 1;
@@ -15,7 +15,7 @@ export const HeaderContainer = styled.header`
   grid-template-areas: 'nav title search';
   grid-template-columns: auto 1fr auto;
   font-size: 1.3em;
-  ${mediaQuery.minTablet} {
+  ${mediaQueries.minTablet} {
     grid-template-areas: 'title nav search';
   }
   a {

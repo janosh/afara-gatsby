@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components'
 import { BookContent } from 'styled-icons/boxicons-regular'
 import { Close as Cross } from 'styled-icons/material'
-import mediaQuery from 'utils/mediaQuery'
+import { mediaQueries } from 'utils/mediaQueries'
 
 const openTocDiv = css`
   background: white;
@@ -23,7 +23,7 @@ export const TocDiv = styled.div`
     max-height: 78vh;
     overflow-y: scroll;
   }
-  ${mediaQuery.maxLaptop} {
+  ${mediaQueries.maxLaptop} {
     position: fixed;
     bottom: 1em;
     left: 1em;
@@ -33,7 +33,7 @@ export const TocDiv = styled.div`
     opacity: ${props => (props.open ? 1 : 0)};
     transition: 0.3s;
   }
-  ${mediaQuery.minLaptop} {
+  ${mediaQueries.minLaptop} {
     font-size: 0.85em;
     grid-column: 4 / -1;
     position: sticky;
@@ -67,7 +67,7 @@ export const TocIcon = styled(BookContent)`
 const openerCss = css`
   position: fixed;
   bottom: calc(2vh + 4em);
-  ${mediaQuery.minNetbook} {
+  ${mediaQueries.minNetbook} {
     bottom: calc(1vh + 1em);
   }
   left: 0;
@@ -96,7 +96,7 @@ export const TocToggle = styled(Cross).attrs(props => ({
   :hover {
     transform: scale(1.1);
   }
-  ${mediaQuery.minLaptop} {
+  ${mediaQueries.minLaptop} {
     display: none;
   }
   ${props => (props.opener ? openerCss : closerCss)};
