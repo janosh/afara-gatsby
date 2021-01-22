@@ -1,6 +1,11 @@
+> ### ⚠️ This repo was superseded by [the new Afara site](https://github.com/janosh/afara-svelte) written in Svelte.
+
 # [Afara](https://afara.foundation)
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/9b5e6acd-b9f8-492c-ab2d-b7882c1c82a0/deploy-status)](https://app.netlify.com/sites/afara/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/9b5e6acd-b9f8-492c-ab2d-b7882c1c82a0/deploy-status)](https://app.netlify.com/sites/afara-gatsby/deploys)
+[![License](https://img.shields.io/github/license/sbsev/website?label=License)](/license)
+![GitHub repo size](https://img.shields.io/github/repo-size/sbsev/website?label=Repo+Size)
+[![GitHub last commit](https://img.shields.io/github/last-commit/sbsev/website?label=Last+Commit)](https://github.com/janosh/afara-gatsby/commits/master)
 
 This repo powers the [Gatsby](https://gatsbyjs.org) site hosted at [afara.foundation](https://afara.foundation). The design and layout rely on [CSS grid](https://css-tricks.com/snippets/css/complete-guide-grid) and [styled-components](https://styled-components.com). It is fully responsive, supports a two-level navbar, [fluid typography](https://css-tricks.com/snippets/css/fluid-typography), [Algolia search](https://algolia.com) and [Contentful](https://contentful.com).
 
@@ -13,8 +18,8 @@ To get this site running locally, you need to have installed [`git`](https://git
 1. Clone the repo to your machine and change into its directory.
 
    ```sh
-   git clone https://github.com/janosh/blog \
-   && cd blog
+   git clone https://github.com/janosh/afara-gatsby \
+   && cd afara-gatsby
    ```
 
 2. Optionally setup `git` hooks (recommended if you intend to open a PR).

@@ -7,8 +7,8 @@ import Search from '../Search'
 import logo from 'assets/favicon.svg'
 
 const searchIndices = [
-  { name: `Pages`, title: `Seiten`, hitComp: `PageHit` },
-  { name: `Posts`, title: `Blog Posts`, hitComp: `PostHit` },
+  { title: `Seiten`, hitComp: `PageHit` },
+  { title: `Posts`, hitComp: `PostHit` },
 ]
 
 const Header = ({ site }) => (

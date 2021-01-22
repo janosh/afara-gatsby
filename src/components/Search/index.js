@@ -35,13 +35,13 @@ export default function Search({ indices, collapse }) {
     <Root ref={ref}>
       <InstantSearch
         searchClient={searchClient}
-        indexName={indices[0].name}
+        indexName={indices[0].title}
         onSearchStateChange={({ query }) => setQuery(query)}
       >
         <Input onFocus={() => setFocus(true)} {...{ collapse, focus }} />
         <HitsWrapper show={query.length > 0 && focus}>
-          {indices.map(({ name, title, type }) => (
-            <Index key={name} indexName={name}>
+          {indices.map(({ title, type }) => (
+            <Index key={title} indexName={title}>
               <header>
                 <h3>{title}</h3>
                 <Stats />

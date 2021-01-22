@@ -39,7 +39,7 @@ export const GlobalStyle = createGlobalStyle`
       color: ${props => props.theme.orange} !important;
     }
   }
-  /* ensure full height page even if unsufficient content */
+  /* ensure full height page even if insufficient content */
   div[role="group"][tabindex] {
     min-height: 100vh;
     display: grid;

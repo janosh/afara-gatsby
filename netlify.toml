@@ -5,7 +5,7 @@
   NODE_VERSION = "15.2.0"
   YARN_VERSION = "1.22.10"
 
-[[redirects]]
-  from = "https://afara.netlify.com/*"
-  to = "https://afara.foundation/:splat"
-  force = true
+# [[redirects]]
+#   from = "https://afara.netlify.com/*"
+#   to = "https://afara.foundation/:splat"
+#   force = true
