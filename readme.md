@@ -2,7 +2,6 @@
 
 # [Afara](https://afara.foundation)
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/9b5e6acd-b9f8-492c-ab2d-b7882c1c82a0/deploy-status)](https://app.netlify.com/sites/afara-gatsby/deploys)
 [![License](https://img.shields.io/github/license/sbsev/website?label=License)](/license)
 ![GitHub repo size](https://img.shields.io/github/repo-size/sbsev/website?label=Repo+Size)
 [![GitHub last commit](https://img.shields.io/github/last-commit/sbsev/website?label=Last+Commit)](https://github.com/janosh/afara-gatsby/commits/master)
